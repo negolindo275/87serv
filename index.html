@@ -7,18 +7,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="87 Serviços e Soluções — segurança, facilities, paisagismo, limpeza e manutenção em Curitiba e região metropolitana.">
     <style>
         :root {
-            --gold: #D4A017;
-            --gold-light: #F5C842;
-            --gold-dark: #B8860B;
-            --dark: #0A0E1A;
-            --dark-light: #141B2D;
-            --dark-card: #1A2236;
-            --white: #FFFFFF;
-            --gray: #8B92A8;
-            --green: #4CAF50;
-            --green-light: #81C784;
+            /* Paleta extraída da logo: dourado #F2BA06 sobre preto */
+            --gold: #F2BA06;
+            --gold-light: #F6CF61;
+            --gold-dark: #B8880A;
+            --dark: #000000;
+            --dark-light: #080808;
+            --dark-card: #100F0F;
+            --white: #F7E4A8;
+            --gray: #C9A64B;
+            --green: var(--gold);
+            --green-light: var(--gold-light);
+            --gold-line: rgba(242, 186, 6, 0.15);
         }
 
         * {
@@ -37,6 +42,25 @@
 
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
+            color: var(--gold);
+        }
+
+        strong {
+            color: var(--gold-light);
+        }
+
+        ::selection {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        ::placeholder {
+            color: rgba(201, 166, 75, 0.7);
+        }
+
+        select option {
+            background: var(--dark-card);
+            color: var(--white);
         }
 
         /* ===== NAVBAR ===== */
@@ -49,9 +73,9 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(10, 14, 26, 0.95);
+            background: rgba(0, 0, 0, 0.92);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 160, 23, 0.1);
+            border-bottom: 1px solid rgba(242, 186, 6, 0.1);
             transition: all 0.3s ease;
         }
 
@@ -66,27 +90,10 @@
             gap: 12px;
         }
 
-        .logo-icon {
-            width: 50px;
+        .logo-img {
             height: 50px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.4rem;
-            color: var(--dark);
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-icon::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.3));
+            width: auto;
+            display: block;
         }
 
         .logo-text {
@@ -148,7 +155,7 @@
 
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 160, 23, 0.4);
+            box-shadow: 0 10px 30px rgba(242, 186, 6, 0.4);
         }
 
         .nav-cta::after {
@@ -179,8 +186,8 @@
             position: absolute;
             inset: 0;
             background: 
-                radial-gradient(ellipse at 20% 50%, rgba(212, 160, 23, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(76, 175, 80, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 50%, rgba(242, 186, 6, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(242, 186, 6, 0.06) 0%, transparent 50%),
                 linear-gradient(180deg, var(--dark) 0%, var(--dark-light) 100%);
         }
 
@@ -188,8 +195,8 @@
             position: absolute;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(212, 160, 23, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(212, 160, 23, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(242, 186, 6, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(242, 186, 6, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
             mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
             -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
@@ -206,8 +213,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(212, 160, 23, 0.1);
-            border: 1px solid rgba(212, 160, 23, 0.3);
+            background: rgba(242, 186, 6, 0.1);
+            border: 1px solid rgba(242, 186, 6, 0.3);
             padding: 0.5rem 1.2rem;
             border-radius: 50px;
             font-size: 0.85rem;
@@ -274,18 +281,18 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: var(--dark);
-            box-shadow: 0 10px 40px rgba(212, 160, 23, 0.3);
+            box-shadow: 0 10px 40px rgba(242, 186, 6, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(212, 160, 23, 0.4);
+            box-shadow: 0 15px 50px rgba(242, 186, 6, 0.4);
         }
 
         .btn-outline {
             background: transparent;
             color: var(--white);
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 2px solid rgba(242, 186, 6, 0.35);
         }
 
         .btn-outline:hover {
@@ -356,7 +363,7 @@
             background: var(--dark-card);
             border-radius: 20px;
             padding: 2.5rem;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(242, 186, 6, 0.12);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -380,7 +387,7 @@
 
         .concept-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(212, 160, 23, 0.2);
+            border-color: rgba(242, 186, 6, 0.2);
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
@@ -396,18 +403,18 @@
         }
 
         .concept-card:nth-child(1) .concept-icon {
-            background: rgba(212, 160, 23, 0.15);
+            background: rgba(242, 186, 6, 0.15);
             color: var(--gold);
         }
 
         .concept-card:nth-child(2) .concept-icon {
-            background: rgba(76, 175, 80, 0.15);
+            background: rgba(242, 186, 6, 0.15);
             color: var(--green);
         }
 
         .concept-card:nth-child(3) .concept-icon {
-            background: rgba(139, 195, 74, 0.15);
-            color: #8BC34A;
+            background: rgba(242, 186, 6, 0.15);
+            color: var(--gold-light);
         }
 
         .concept-card h3 {
@@ -425,9 +432,9 @@
             text-align: center;
             margin-top: 4rem;
             padding: 2rem;
-            background: linear-gradient(135deg, rgba(212, 160, 23, 0.05), rgba(76, 175, 80, 0.05));
+            background: linear-gradient(135deg, rgba(242, 186, 6, 0.05), rgba(242, 186, 6, 0.05));
             border-radius: 20px;
-            border: 1px solid rgba(212, 160, 23, 0.1);
+            border: 1px solid rgba(242, 186, 6, 0.1);
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
@@ -461,7 +468,7 @@
             background: var(--dark-card);
             border-radius: 20px;
             padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(242, 186, 6, 0.12);
             transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
@@ -472,14 +479,14 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(212, 160, 23, 0.05), transparent);
+            background: linear-gradient(135deg, rgba(242, 186, 6, 0.05), transparent);
             opacity: 0;
             transition: opacity 0.4s;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(212, 160, 23, 0.2);
+            border-color: rgba(242, 186, 6, 0.2);
         }
 
         .service-card:hover::after {
@@ -499,12 +506,12 @@
             z-index: 1;
         }
 
-        .service-card:nth-child(1) .service-icon { background: rgba(212, 160, 23, 0.15); color: var(--gold); }
-        .service-card:nth-child(2) .service-icon { background: rgba(255, 193, 7, 0.15); color: #FFC107; }
-        .service-card:nth-child(3) .service-icon { background: rgba(76, 175, 80, 0.15); color: var(--green); }
-        .service-card:nth-child(4) .service-icon { background: rgba(33, 150, 243, 0.15); color: #2196F3; }
-        .service-card:nth-child(5) .service-icon { background: rgba(156, 39, 176, 0.15); color: #9C27B0; }
-        .service-card:nth-child(6) .service-icon { background: rgba(233, 30, 99, 0.15); color: #E91E63; }
+        .service-card:nth-child(1) .service-icon { background: rgba(242, 186, 6, 0.15); color: var(--gold); }
+        .service-card:nth-child(2) .service-icon { background: rgba(246, 207, 97, 0.15); color: var(--gold-light); }
+        .service-card:nth-child(3) .service-icon { background: rgba(242, 186, 6, 0.15); color: var(--green); }
+        .service-card:nth-child(4) .service-icon { background: rgba(242, 186, 6, 0.15); color: var(--gold); }
+        .service-card:nth-child(5) .service-icon { background: rgba(246, 207, 97, 0.15); color: var(--gold-light); }
+        .service-card:nth-child(6) .service-icon { background: rgba(242, 186, 6, 0.15); color: var(--gold); }
 
         .service-card h3 {
             font-size: 1.15rem;
@@ -562,12 +569,12 @@
             padding: 1.5rem;
             background: var(--dark-card);
             border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(242, 186, 6, 0.12);
             transition: all 0.3s;
         }
 
         .diferencial-item:hover {
-            border-color: rgba(212, 160, 23, 0.2);
+            border-color: rgba(242, 186, 6, 0.2);
             transform: translateX(5px);
         }
 
@@ -576,7 +583,7 @@
             height: 45px;
             min-width: 45px;
             border-radius: 12px;
-            background: rgba(212, 160, 23, 0.1);
+            background: rgba(242, 186, 6, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -628,12 +635,12 @@
             padding: 1rem;
             background: var(--dark-card);
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(242, 186, 6, 0.12);
             transition: all 0.3s;
         }
 
         .contact-item:hover {
-            border-color: rgba(212, 160, 23, 0.2);
+            border-color: rgba(242, 186, 6, 0.2);
             transform: translateX(5px);
         }
 
@@ -642,7 +649,7 @@
             height: 45px;
             min-width: 45px;
             border-radius: 12px;
-            background: rgba(212, 160, 23, 0.1);
+            background: rgba(242, 186, 6, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -664,7 +671,7 @@
             background: var(--dark-card);
             padding: 2.5rem;
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(242, 186, 6, 0.12);
         }
 
         .form-group {
@@ -685,7 +692,7 @@
             width: 100%;
             padding: 1rem;
             background: var(--dark);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(242, 186, 6, 0.22);
             border-radius: 12px;
             color: var(--white);
             font-family: 'Inter', sans-serif;
@@ -698,7 +705,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.1);
+            box-shadow: 0 0 0 3px rgba(242, 186, 6, 0.1);
         }
 
         .form-group textarea {
@@ -721,14 +728,14 @@
 
         .form-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 160, 23, 0.3);
+            box-shadow: 0 10px 30px rgba(242, 186, 6, 0.3);
         }
 
         /* ===== FOOTER ===== */
         .footer {
             padding: 60px 5% 30px;
             background: var(--dark);
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(242, 186, 6, 0.12);
         }
 
         .footer-content {
@@ -739,7 +746,20 @@
             margin: 0 auto 3rem;
         }
 
-        .footer-brand .logo {
+        .footer-logo {
+            width: 200px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand .footer-tagline {
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             margin-bottom: 1rem;
         }
 
@@ -777,7 +797,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(242, 186, 6, 0.12);
             color: var(--gray);
             font-size: 0.85rem;
         }
@@ -800,7 +820,7 @@
             color: var(--dark);
             font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 10px 40px rgba(212, 160, 23, 0.4);
+            box-shadow: 0 10px 40px rgba(242, 186, 6, 0.4);
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
@@ -831,9 +851,9 @@
             right: 5px;
             width: 12px;
             height: 12px;
-            background: #FF4444;
+            background: var(--dark);
             border-radius: 50%;
-            border: 2px solid var(--dark);
+            border: 2px solid var(--gold-light);
         }
 
         .chatbot-window {
@@ -844,7 +864,7 @@
             max-height: 600px;
             background: var(--dark-card);
             border-radius: 24px;
-            border: 1px solid rgba(212, 160, 23, 0.2);
+            border: 1px solid rgba(242, 186, 6, 0.2);
             box-shadow: 0 25px 80px rgba(0,0,0,0.5);
             overflow: hidden;
             display: none;
@@ -863,8 +883,8 @@
 
         .chatbot-header {
             padding: 1.2rem 1.5rem;
-            background: linear-gradient(135deg, rgba(212, 160, 23, 0.15), rgba(212, 160, 23, 0.05));
-            border-bottom: 1px solid rgba(212, 160, 23, 0.1);
+            background: linear-gradient(135deg, rgba(242, 186, 6, 0.15), rgba(242, 186, 6, 0.05));
+            border-bottom: 1px solid rgba(242, 186, 6, 0.1);
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -941,7 +961,7 @@
         }
 
         .chatbot-messages::-webkit-scrollbar-thumb {
-            background: rgba(212, 160, 23, 0.3);
+            background: rgba(242, 186, 6, 0.3);
             border-radius: 3px;
         }
 
@@ -964,7 +984,7 @@
             color: var(--white);
             align-self: flex-start;
             border-bottom-left-radius: 4px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(242, 186, 6, 0.12);
         }
 
         .message.user {
@@ -1006,8 +1026,8 @@
 
         .chat-option {
             padding: 0.6rem 1rem;
-            background: rgba(212, 160, 23, 0.1);
-            border: 1px solid rgba(212, 160, 23, 0.2);
+            background: rgba(242, 186, 6, 0.1);
+            border: 1px solid rgba(242, 186, 6, 0.2);
             border-radius: 50px;
             color: var(--gold);
             font-size: 0.85rem;
@@ -1023,7 +1043,7 @@
 
         .chatbot-input-area {
             padding: 1rem 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(242, 186, 6, 0.12);
             display: flex;
             gap: 0.5rem;
         }
@@ -1032,7 +1052,7 @@
             flex: 1;
             padding: 0.8rem 1.2rem;
             background: var(--dark);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(242, 186, 6, 0.22);
             border-radius: 50px;
             color: var(--white);
             font-family: 'Inter', sans-serif;
@@ -1166,7 +1186,7 @@
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="logo">
-            <div class="logo-icon">87</div>
+            <img src="assets/logo-mark.png" alt="87 Serviços e Soluções" class="logo-img">
             <div class="logo-text">
                 SERVIÇOS E SOLUÇÕES
                 <span>Segurança • Facilities • Paisagismo</span>
@@ -1445,13 +1465,8 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="logo">
-                    <div class="logo-icon">87</div>
-                    <div class="logo-text">
-                        SERVIÇOS E SOLUÇÕES
-                        <span>Segurança • Facilities • Paisagismo</span>
-                    </div>
-                </div>
+                <img src="assets/logo-full.png" alt="87 Serviços e Soluções — Segurança, Facilities e Paisagismo" class="footer-logo">
+                <p class="footer-tagline">Segurança • Facilities • Paisagismo</p>
                 <p>Compromisso com a cidade, respeito com as pessoas, dedicação ao cliente. 87 serviços e soluções integradas para transformar seu empreendimento.</p>
             </div>
             <div class="footer-column">
@@ -1725,4 +1740,157 @@
                 options: [
                     { text: '💰 Como funciona o orçamento?', next: 'duvida_orcamento' },
                     { text: '📍 Atendem minha região?', next: 'duvida_regiao' },
-                   
+                    { text: '📄 Contratos e prazos', next: 'duvida_contrato' },
+                    { text: '👷 Equipe e certificações', next: 'duvida_equipe' },
+                    { text: '🔙 Voltar ao início', next: 'welcome' }
+                ]
+            },
+            duvida_orcamento: {
+                message: '💰 **Como funciona o orçamento**\n\n1️⃣ Você nos conta o tipo de empreendimento e o serviço desejado\n2️⃣ Fazemos uma visita técnica **gratuita e sem compromisso**\n3️⃣ Você recebe uma proposta personalizada em até **2 dias úteis**\n\nO orçamento é sempre sob medida: o preço depende da área, do número de postos e da frequência do serviço.',
+                options: [
+                    { text: '💰 Quero um orçamento', next: 'servico' },
+                    { text: '❓ Outras dúvidas', next: 'duvidas' }
+                ]
+            },
+            duvida_regiao: {
+                message: '📍 **Onde atendemos**\n\nAtendemos **Curitiba** e toda a **Região Metropolitana**, incluindo São José dos Pinhais, Pinhais, Colombo, Araucária, Campo Largo, Fazenda Rio Grande e Almirante Tamandaré.\n\nEstá em outra cidade do Paraná? Fale com a gente: em muitos casos conseguimos atender projetos maiores fora dessa área.',
+                options: [
+                    { text: '💰 Quero um orçamento', next: 'servico' },
+                    { text: '❓ Outras dúvidas', next: 'duvidas' }
+                ]
+            },
+            duvida_contrato: {
+                message: '📄 **Contratos e prazos**\n\n• Contratos mensais, anuais ou por projeto\n• Início da operação em até **7 dias** após a assinatura\n• Sem taxa de implantação nos contratos anuais\n• Relatórios periódicos de desempenho\n• Substituição de equipe garantida em caso de falta\n\nToda a documentação trabalhista fica sob nossa responsabilidade.',
+                options: [
+                    { text: '💰 Quero um orçamento', next: 'servico' },
+                    { text: '❓ Outras dúvidas', next: 'duvidas' }
+                ]
+            },
+            duvida_equipe: {
+                message: '👷 **Equipe e certificações**\n\n• Profissionais registrados em regime CLT\n• Treinamento contínuo e reciclagem periódica\n• Vigilantes com curso de formação atualizado\n• Uso obrigatório de EPIs e uniformes identificados\n• Normas de segurança do trabalho (NRs) aplicadas\n\nSegurança e respeito às pessoas são a base do nosso trabalho.',
+                options: [
+                    { text: '💰 Quero um orçamento', next: 'servico' },
+                    { text: '❓ Outras dúvidas', next: 'duvidas' }
+                ]
+            }
+        };
+
+        // Campos preenchidos por texto livre em cada etapa de coleta
+        const chatInputKeys = {
+            coleta_dados: 'nome',
+            coleta_empresa: 'empresa',
+            coleta_contato: 'contato'
+        };
+
+        const chatWindowEl = document.getElementById('chatbotWindow');
+        const chatMessagesEl = document.getElementById('chatMessages');
+        const chatOptionsEl = document.getElementById('chatOptions');
+        const chatInputEl = document.getElementById('chatInput');
+        const chatNotificationEl = document.getElementById('chatNotification');
+
+        function chatFormat(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+        }
+
+        function addChatMessage(text, sender) {
+            const el = document.createElement('div');
+            el.className = 'message ' + sender;
+            el.innerHTML = chatFormat(text);
+            chatMessagesEl.appendChild(el);
+            chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+            chatState.history.push({ sender, text });
+            return el;
+        }
+
+        function showChatTyping() {
+            const el = document.createElement('div');
+            el.className = 'message bot typing';
+            el.innerHTML = '<span></span><span></span><span></span>';
+            chatMessagesEl.appendChild(el);
+            chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+            return el;
+        }
+
+        function renderChatStep(stepKey) {
+            const flow = chatFlows[stepKey];
+            if (!flow) return;
+            chatState.step = stepKey;
+            chatOptionsEl.innerHTML = '';
+            const typing = showChatTyping();
+            setTimeout(() => {
+                typing.remove();
+                const message = typeof flow.message === 'function' ? flow.message(chatState.data) : flow.message;
+                addChatMessage(message, 'bot');
+                (flow.options || []).forEach((option, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'chat-option';
+                    btn.type = 'button';
+                    btn.textContent = option.text;
+                    btn.addEventListener('click', () => chooseChatOption(index));
+                    chatOptionsEl.appendChild(btn);
+                });
+                chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+            }, 650);
+        }
+
+        function chooseChatOption(index) {
+            const flow = chatFlows[chatState.step];
+            const option = flow && flow.options ? flow.options[index] : null;
+            if (!option) return;
+            addChatMessage(option.text, 'user');
+            if (option.data) Object.assign(chatState.data, option.data);
+            chatOptionsEl.innerHTML = '';
+            renderChatStep(option.next);
+        }
+
+        function sendChatMessage() {
+            const value = chatInputEl.value.trim();
+            if (!value) return;
+            addChatMessage(value, 'user');
+            chatInputEl.value = '';
+            const flow = chatFlows[chatState.step];
+            if (flow && flow.input) {
+                const key = chatInputKeys[chatState.step];
+                if (key) chatState.data[key] = value;
+                renderChatStep(flow.next);
+                return;
+            }
+            const typing = showChatTyping();
+            setTimeout(() => {
+                typing.remove();
+                addChatMessage('Para agilizar seu atendimento, escolha uma das opções acima 👆 ou fale direto com nossa equipe no **(41) 99981-8412**.', 'bot');
+            }, 650);
+        }
+
+        function handleChatKey(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                sendChatMessage();
+            }
+        }
+
+        function toggleChat() {
+            const isOpen = chatWindowEl.classList.toggle('active');
+            if (!isOpen) return;
+            chatNotificationEl.style.display = 'none';
+            if (!chatMessagesEl.children.length) renderChatStep('welcome');
+            chatInputEl.focus();
+        }
+
+        function openChat(servico) {
+            const stepKey = chatFlows['detalhe_' + servico] ? 'detalhe_' + servico : 'servico';
+            if (!chatWindowEl.classList.contains('active')) {
+                chatWindowEl.classList.add('active');
+                chatNotificationEl.style.display = 'none';
+            }
+            renderChatStep(stepKey);
+            chatInputEl.focus();
+        }
+    </script>
+</body>
+</html>
