@@ -2321,12 +2321,7 @@
         <input name="empresa">
         <input name="tipo">
         <input name="tamanho">
-        <input name="dor">
-        <input name="prazo">
-        <input name="decisor">
         <input name="contato">
-        <input name="classificacao">
-        <input name="qualificacao">
         <input name="origem">
     </form>
 
@@ -2971,12 +2966,10 @@
         }
 
         // Entrega ao Netlify o lead que o atendente virtual acabou de coletar,
-        // já classificado, para que a conversa não se perca quando o visitante
-        // fecha a janela e para que o time saiba o que priorizar.
+        // para que a conversa não se perca quando o visitante fecha a janela.
         async function enviarLeadDoChat() {
             if (chatState.leadEnviado) return;
             chatState.leadEnviado = true;
-            const qualificacao = classificarLead(chatState.data);
             try {
                 await enviarParaNetlify({
                     'form-name': 'orcamento-chat',
@@ -2985,12 +2978,7 @@
                     empresa: chatState.data.empresa || '',
                     tipo: chatState.data.tipo || '',
                     tamanho: chatState.data.tamanho || '',
-                    dor: chatState.data.dor || '',
-                    prazo: chatState.data.prazo || '',
-                    decisor: chatState.data.decisor || '',
                     contato: chatState.data.contato || '',
-                    classificacao: qualificacao.classificacao,
-                    qualificacao: qualificacao.justificativa,
                     origem: 'Atendente virtual do site'
                 });
             } catch (erro) {
@@ -3000,7 +2988,9 @@
             }
         }
 
-        function chooseChatOption(option) {
+        function chooseChatOption(index) {
+            const flow = chatFlows[chatState.step];
+            const option = flow && flow.options ? flow.options[index] : null;
             if (!option) return;
             addChatMessage(option.text, 'user');
             if (option.data) Object.assign(chatState.data, option.data);
