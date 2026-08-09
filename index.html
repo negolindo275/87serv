@@ -11,21 +11,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/logo-mark.png">
+    <link rel="canonical" href="https://87ss.netlify.app/">
     <meta name="theme-color" content="#000000">
     <meta name="author" content="87 Serviços e Soluções">
     <meta name="robots" content="index, follow">
 
-    <!-- Compartilhamento em redes sociais e WhatsApp -->
+    <!-- Compartilhamento em redes sociais e WhatsApp.
+         As URLs aqui precisam ser absolutas: o WhatsApp e as redes sociais não
+         resolvem caminho relativo e simplesmente não exibem a imagem de prévia. -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="87 Serviços e Soluções">
     <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://87ss.netlify.app/">
     <meta property="og:title" content="87 Serviços e Soluções | Segurança, Facilities e Paisagismo em Curitiba">
     <meta property="og:description" content="Soluções integradas em segurança, facilities, paisagismo, limpeza e manutenção para condomínios, empresas e indústrias em Curitiba e região metropolitana.">
-    <meta property="og:image" content="assets/logo-full.png">
+    <meta property="og:image" content="https://87ss.netlify.app/assets/logo-full.png">
+    <meta property="og:image:width" content="520">
+    <meta property="og:image:height" content="463">
+    <meta property="og:image:alt" content="Logo da 87 Serviços e Soluções">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="87 Serviços e Soluções | Segurança, Facilities e Paisagismo">
     <meta name="twitter:description" content="Segurança, facilities e paisagismo em sincronia. Atendemos Curitiba e região metropolitana com plantão 24h.">
-    <meta name="twitter:image" content="assets/logo-full.png">
+    <meta name="twitter:image" content="https://87ss.netlify.app/assets/logo-full.png">
+    <meta name="twitter:image:alt" content="Logo da 87 Serviços e Soluções">
 
     <!-- Dados estruturados para busca local -->
     <script type="application/ld+json">
@@ -38,7 +46,8 @@
       "vatID": "62.970.062/0001-83",
       "telephone": "+55-41-99981-8412",
       "priceRange": "$$",
-      "image": "assets/logo-full.png",
+      "url": "https://87ss.netlify.app/",
+      "image": "https://87ss.netlify.app/assets/logo-full.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Curitiba",
@@ -2312,7 +2321,12 @@
         <input name="empresa">
         <input name="tipo">
         <input name="tamanho">
+        <input name="dor">
+        <input name="prazo">
+        <input name="decisor">
         <input name="contato">
+        <input name="classificacao">
+        <input name="qualificacao">
         <input name="origem">
     </form>
 
@@ -2323,7 +2337,7 @@
                 <div class="chatbot-avatar" aria-hidden="true">🤖</div>
                 <div class="chatbot-header-info">
                     <h4>Atendente 87</h4>
-                    <span>Online agora</span>
+                    <span id="chatStatus">Online agora</span>
                 </div>
                 <button class="chatbot-close" onclick="toggleChat()" aria-label="Fechar atendente virtual"><i class="fas fa-times" aria-hidden="true"></i></button>
             </div>
@@ -2512,12 +2526,13 @@
 
         const chatFlows = {
             welcome: {
-                message: 'Olá! 👋 Sou o Atendente Virtual da **87 Serviços e Soluções**. Estou aqui para ajudar você a encontrar a melhor solução para seu empreendimento. Como posso ajudar?',
+                message: () => 'Olá! 👋 Sou o Atendente Virtual da **87 Serviços e Soluções**. Estou aqui para ajudar você a encontrar a melhor solução para seu empreendimento. Como posso ajudar?' + avisoDeHorario(),
                 options: [
                     { text: '💰 Quero um orçamento', next: 'servico' },
                     { text: '📋 Conhecer serviços', next: 'menu_servicos' },
-                    { text: '📞 Falar com consultor', next: 'contato_direto' },
-                    { text: '❓ Tirar dúvidas', next: 'duvidas' }
+                    { text: '❓ Tirar dúvidas', next: 'duvidas' },
+                    { text: '🚨 Urgência / plantão 24h', next: 'urgencia' },
+                    { text: '📞 Falar com consultor', next: 'contato_direto' }
                 ]
             },
             servico: {
@@ -2615,11 +2630,34 @@
             coleta_tamanho: {
                 message: 'Qual aproximadamente o **tamanho da área** ou número de unidades?',
                 options: [
-                    { text: 'Até 1.000 m²', next: 'coleta_contato', data: { tamanho: 'Até 1.000 m²' } },
-                    { text: '1.000 a 5.000 m²', next: 'coleta_contato', data: { tamanho: '1.000 a 5.000 m²' } },
-                    { text: '5.000 a 20.000 m²', next: 'coleta_contato', data: { tamanho: '5.000 a 20.000 m²' } },
-                    { text: 'Acima de 20.000 m²', next: 'coleta_contato', data: { tamanho: 'Acima de 20.000 m²' } },
-                    { text: 'Não sei informar', next: 'coleta_contato', data: { tamanho: 'Não informado' } }
+                    { text: 'Até 1.000 m²', next: 'coleta_dor', data: { tamanho: 'Até 1.000 m²' } },
+                    { text: '1.000 a 5.000 m²', next: 'coleta_dor', data: { tamanho: '1.000 a 5.000 m²' } },
+                    { text: '5.000 a 20.000 m²', next: 'coleta_dor', data: { tamanho: '5.000 a 20.000 m²' } },
+                    { text: 'Acima de 20.000 m²', next: 'coleta_dor', data: { tamanho: 'Acima de 20.000 m²' } },
+                    { text: 'Não sei informar', next: 'coleta_dor', data: { tamanho: 'Não informado' } }
+                ]
+            },
+            coleta_dor: {
+                message: 'E qual o **principal problema que você quer resolver** hoje? Pode escrever com suas palavras — ex.: portaria sem cobertura, contrato vencendo, área verde malcuidada.',
+                options: [],
+                input: true,
+                next: 'coleta_prazo'
+            },
+            coleta_prazo: {
+                message: 'Para **quando** você pretende ter isso resolvido?',
+                options: [
+                    { text: '🔥 É urgente / até 30 dias', next: 'coleta_decisor', data: { prazo: 'Urgente ou até 30 dias' } },
+                    { text: '📅 De 1 a 3 meses', next: 'coleta_decisor', data: { prazo: 'De 1 a 3 meses' } },
+                    { text: '🔎 Ainda sem prazo definido', next: 'coleta_decisor', data: { prazo: 'Sem prazo definido' } }
+                ]
+            },
+            coleta_decisor: {
+                message: 'Só mais uma: **você participa da decisão** de contratação?',
+                options: [
+                    { text: '✅ Sim, a decisão é minha', next: 'coleta_contato', data: { decisor: 'Decide a contratação' } },
+                    { text: '🤝 Decido junto com outras pessoas', next: 'coleta_contato', data: { decisor: 'Decide em conjunto' } },
+                    { text: '📋 Vou levar para o conselho/diretoria', next: 'coleta_contato', data: { decisor: 'Leva para conselho ou diretoria' } },
+                    { text: '🔎 Estou só pesquisando', next: 'coleta_contato', data: { decisor: 'Apenas pesquisando' } }
                 ]
             },
             coleta_contato: {
@@ -2629,16 +2667,50 @@
                 next: 'finalizar'
             },
             finalizar: {
-                message: (data) => `🎉 **Solicitação recebida com sucesso!**\n\nResumo da sua proposta:\n• **Serviço:** ${data.servico}\n• **Responsável:** ${data.nome}\n• **Empreendimento:** ${data.empresa}\n• **Tipo:** ${data.tipo}\n• **Tamanho:** ${data.tamanho}\n• **Contato:** ${data.contato}\n\nNosso consultor comercial entrará em contato em até **2 horas úteis** com sua proposta personalizada.\n\nAgradecemos seu interesse na **87 Serviços e Soluções**! 🏆`,
+                message: (data) => `🎉 **Solicitação recebida com sucesso!**\n\nResumo do seu pedido:\n• **Serviço:** ${data.servico}\n• **Responsável:** ${data.nome}\n• **Empreendimento:** ${data.empresa}\n• **Tipo:** ${data.tipo}\n• **Tamanho:** ${data.tamanho}\n• **Necessidade:** ${data.dor}\n• **Prazo:** ${data.prazo}\n• **Contato:** ${data.contato}\n\n` +
+                    (classificarLead(data).classificacao === 'Quente'
+                        ? 'Seu caso entra como **prioridade** na fila do time comercial: o consultor retorna em até **1 dia útil** para agendar a visita técnica gratuita. Se quiser adiantar, chame agora no WhatsApp — respondemos por lá também.'
+                        : 'Nosso consultor comercial entra em contato em até **1 dia útil** para agendar sua **visita técnica gratuita e sem compromisso**. A proposta sob medida sai em até 2 dias úteis depois da visita.') +
+                    '\n\nAgradecemos seu interesse na **87 Serviços e Soluções**! 🏆',
                 options: [
                     { text: '🔄 Nova solicitação', next: 'welcome' },
                     { text: '📞 Ligar agora', next: 'contato_direto' }
                 ]
             },
             contato_direto: {
-                message: 'Claro! Você pode falar diretamente conosco:\n\n📞 **(41) 99981-8412**\n📞 **(41) 99981-9750**\n\nOu envie um WhatsApp clicando no botão verde no canto da tela. Nossos consultores estão prontos para atender você!',
+                message: () => 'Claro! Você pode falar diretamente conosco:\n\n📞 **(41) 99981-8412**\n📞 **(41) 99981-9750**\n\nOu envie um WhatsApp clicando no botão verde no canto da tela. Nossos consultores estão prontos para atender você!' + avisoDeHorario(),
                 options: [
                     { text: '🔄 Voltar ao início', next: 'welcome' }
+                ]
+            },
+            urgencia: {
+                message: '🚨 **Plantão 24 horas**\n\nPara ocorrências de **segurança** ou **emergências de manutenção** em contratos ativos, fale agora mesmo com o plantão:\n\n📞 **(41) 99981-8412**\n📞 **(41) 99981-9750**\n\nO WhatsApp no canto da tela é o caminho mais rápido. Havendo risco a pessoas ou ao patrimônio, ligue direto — não espere resposta por aqui.',
+                options: [
+                    { text: '💰 Ainda não sou cliente, quero orçamento', next: 'servico' },
+                    { text: '🔙 Voltar ao início', next: 'welcome' }
+                ]
+            },
+            objecao_preco: {
+                message: '💰 **Sobre o valor**\n\nNão trabalhamos com tabela fechada, e isso é proposital: o preço depende da **área**, do **número de postos** e da **frequência** do serviço. Fechar um número antes de conhecer o local levaria você a pagar por algo que talvez nem precise.\n\nO caminho é simples e sem custo:\n1️⃣ **Visita técnica gratuita e sem compromisso**\n2️⃣ Proposta sob medida em até **2 dias úteis**\n\nVale considerar também o custo de não resolver: rotatividade de porteiro, passivo trabalhista de equipe irregular e desvalorização do imóvel por falta de manutenção. E no **Pacote Integrado** um único contrato reduz o tempo que o síndico ou gestor gasta administrando cinco fornecedores diferentes.',
+                options: [
+                    { text: '✅ Quero a visita técnica gratuita', next: 'servico' },
+                    { text: '📞 Falar com consultor', next: 'contato_direto' },
+                    { text: '❓ Outras dúvidas', next: 'duvidas' }
+                ]
+            },
+            desconto: {
+                message: 'Sobre **desconto ou condição especial**, eu não tenho autonomia para negociar — isso é sempre decidido por um consultor humano, junto com a proposta.\n\nO que posso fazer é registrar seu pedido e agilizar o contato do time comercial. Na prática, o maior ganho costuma vir do **Pacote Integrado**: reunir serviços em um só contrato reduz o custo total de gestão.',
+                options: [
+                    { text: '📞 Falar com consultor', next: 'contato_direto' },
+                    { text: '💰 Quero um orçamento', next: 'servico' }
+                ]
+            },
+            sou_virtual: {
+                message: 'Pergunta justa, e a resposta honesta: **sou o atendente virtual da 87**, um assistente automático. Não sou humano. 🤖\n\nConsigo tirar dúvidas sobre os serviços e organizar seu pedido de orçamento. Negociação, proposta e detalhes de contrato ficam com um consultor de verdade.',
+                options: [
+                    { text: '📞 Falar com um consultor', next: 'contato_direto' },
+                    { text: '💰 Quero um orçamento', next: 'servico' },
+                    { text: '❓ Tirar dúvidas', next: 'duvidas' }
                 ]
             },
             duvidas: {
@@ -2648,6 +2720,9 @@
                     { text: '📍 Atendem minha região?', next: 'duvida_regiao' },
                     { text: '📄 Contratos e prazos', next: 'duvida_contrato' },
                     { text: '👷 Equipe e certificações', next: 'duvida_equipe' },
+                    { text: '📦 Posso juntar vários serviços?', next: 'duvida_varios' },
+                    { text: '🔄 E se um profissional faltar?', next: 'duvida_falta' },
+                    { text: '🚨 Emergências e plantão 24h', next: 'duvida_emergencia' },
                     { text: '🔙 Voltar ao início', next: 'welcome' }
                 ]
             },
@@ -2678,6 +2753,28 @@
                     { text: '💰 Quero um orçamento', next: 'servico' },
                     { text: '❓ Outras dúvidas', next: 'duvidas' }
                 ]
+            },
+            duvida_varios: {
+                message: '📦 **Vários serviços, um só contrato**\n\nSim — e é o formato que mais recomendamos. O **Pacote Integrado 87** reúne segurança, facilities, paisagismo, limpeza e manutenção com:\n\n✅ Gestão centralizada\n✅ Um único ponto de contato\n✅ Uma só fatura para administrar\n✅ Relatórios consolidados no mesmo documento\n\nAlém da praticidade, isso reduz o tempo que o síndico ou gestor gasta coordenando fornecedores diferentes.',
+                options: [
+                    { text: '💰 Quero um orçamento do pacote', next: 'coleta_dados', data: { servico: 'Pacote Integrado' } },
+                    { text: '❓ Outras dúvidas', next: 'duvidas' }
+                ]
+            },
+            duvida_falta: {
+                message: '🔄 **Se um profissional faltar**\n\nA **substituição é garantida em contrato**. Mantemos equipe de cobertura para que o posto não fique descoberto, e a supervisão acompanha a troca para que a rotina do local não seja afetada.\n\nComo a equipe é própria e CLT, toda a gestão de férias, atestados e afastamentos fica com a 87 — não com você.',
+                options: [
+                    { text: '💰 Quero um orçamento', next: 'servico' },
+                    { text: '❓ Outras dúvidas', next: 'duvidas' }
+                ]
+            },
+            duvida_emergencia: {
+                message: '🚨 **Emergências e horário de atendimento**\n\nO escritório atende de **segunda a sexta, das 8h às 18h**. Para ocorrências de segurança e emergências de manutenção nos contratos ativos, mantemos **plantão 24 horas**, todos os dias.',
+                options: [
+                    { text: '🚨 Tenho uma urgência agora', next: 'urgencia' },
+                    { text: '💰 Quero um orçamento', next: 'servico' },
+                    { text: '❓ Outras dúvidas', next: 'duvidas' }
+                ]
             }
         };
 
@@ -2685,8 +2782,129 @@
         const chatInputKeys = {
             coleta_dados: 'nome',
             coleta_empresa: 'empresa',
+            coleta_dor: 'dor',
             coleta_contato: 'contato'
         };
+
+        // Perguntas digitadas livremente caem no assunto do playbook comercial com
+        // mais termos reconhecidos. Só entra aqui o que está documentado no site —
+        // preço, prazo e condição não confirmados vão para o time humano.
+        const chatConhecimento = [
+            { termos: ['quanto custa', 'quanto fica', 'quanto sai', 'quanto e', 'preco', 'precos', 'valor', 'valores', 'custo', 'caro', 'tabela', 'mensalidade', 'investimento'], next: 'objecao_preco' },
+            { termos: ['desconto', 'descontos', 'negociar', 'negociacao', 'abatimento', 'condicao especial', 'melhor preco', 'cobrir oferta'], next: 'desconto' },
+            { termos: ['voce e humano', 'e humano', 'e um robo', 'robo', 'bot', 'pessoa real', 'atendente de verdade', 'inteligencia artificial', 'ia'], next: 'sou_virtual' },
+            { termos: ['urgente', 'urgencia', 'emergencia', 'plantao', '24h', '24 horas', 'agora mesmo', 'socorro', 'invasao', 'arrombamento', 'vazamento'], next: 'urgencia' },
+            { termos: ['orcamento', 'proposta', 'visita', 'visita tecnica', 'vistoria', 'agendar', 'agendamento', 'como funciona'], next: 'duvida_orcamento' },
+            { termos: ['regiao', 'atendem', 'atende', 'cidade', 'curitiba', 'sao jose dos pinhais', 'pinhais', 'colombo', 'araucaria', 'campo largo', 'fazenda rio grande', 'almirante tamandare', 'parana'], next: 'duvida_regiao' },
+            { termos: ['contrato', 'contratos', 'prazo', 'prazos', 'fidelidade', 'implantacao', 'multa', 'rescisao', 'quanto tempo', 'comeca'], next: 'duvida_contrato' },
+            { termos: ['equipe', 'funcionario', 'funcionarios', 'clt', 'registrado', 'treinamento', 'uniforme', 'epi', 'certificacao', 'vigilante', 'trabalhista', 'documentacao'], next: 'duvida_equipe' },
+            { termos: ['varios', 'todos os servicos', 'mais de um', 'juntar', 'combinar', 'pacote', 'integrado'], next: 'duvida_varios' },
+            { termos: ['faltar', 'falta', 'substituicao', 'substituir', 'atestado', 'ferias', 'cobertura', 'absenteismo'], next: 'duvida_falta' },
+            { termos: ['telefone', 'whatsapp', 'zap', 'ligar', 'contato', 'email', 'falar com alguem', 'consultor', 'vendedor'], next: 'contato_direto' },
+            { termos: ['servicos', 'o que voces fazem', 'quais servicos', 'portfolio'], next: 'menu_servicos' },
+            { termos: ['seguranca', 'portaria', 'porteiro', 'cftv', 'vigilancia', 'ronda', 'controle de acesso'], next: 'detalhe_seguranca' },
+            { termos: ['facilities', 'infraestrutura', 'recepcao', 'zeladoria'], next: 'detalhe_facilities' },
+            { termos: ['paisagismo', 'jardim', 'jardinagem', 'grama', 'area verde', 'poda', 'irrigacao'], next: 'detalhe_paisagismo' },
+            { termos: ['limpeza', 'faxina', 'conservacao', 'higienizacao', 'pos obra'], next: 'detalhe_limpeza' },
+            { termos: ['manutencao', 'eletrica', 'hidraulica', 'ar condicionado', 'elevador', 'pintura', 'predial'], next: 'detalhe_manutencao' },
+            { termos: ['terceirizados', 'terceirizacao', 'mao de obra', 'recrutamento', 'folha de pagamento'], next: 'detalhe_terceirizados' }
+        ];
+
+        function normalizarTexto(texto) {
+            return texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        // Compara sempre por palavra inteira: "valor" não pode casar dentro de
+        // "valorização", nem "nada" dentro de "abandonada".
+        function frasePesquisavel(texto) {
+            return ' ' + normalizarTexto(texto).replace(/[^a-z0-9]+/g, ' ').trim() + ' ';
+        }
+
+        function contemExpressao(frase, expressao) {
+            return frase.includes(' ' + expressao + ' ');
+        }
+
+        function encontrarAssunto(texto) {
+            const frase = frasePesquisavel(texto);
+            let assunto = null;
+            let melhorPontuacao = 0;
+            chatConhecimento.forEach(topico => {
+                const pontos = topico.termos.filter(termo => contemExpressao(frase, termo)).length;
+                if (pontos > melhorPontuacao) {
+                    melhorPontuacao = pontos;
+                    assunto = topico;
+                }
+            });
+            return assunto;
+        }
+
+        // Horário comercial da 87: seg-sex, 8h-18h no fuso de Curitiba.
+        function dentroDoHorarioComercial() {
+            const partes = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'America/Sao_Paulo',
+                weekday: 'short',
+                hour: 'numeric',
+                hourCycle: 'h23'
+            }).formatToParts(new Date());
+            const dia = partes.find(parte => parte.type === 'weekday').value;
+            const hora = Number(partes.find(parte => parte.type === 'hour').value);
+            return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].includes(dia) && hora >= 8 && hora < 18;
+        }
+
+        // Fora do expediente o visitante precisa saber quando esperar retorno —
+        // e que o plantão 24h continua ativo para quem já tem contrato.
+        function avisoDeHorario() {
+            if (dentroDoHorarioComercial()) return '';
+            return '\n\n🕐 Nosso escritório atende de **segunda a sexta, das 8h às 18h**. Fora desse horário eu sigo por aqui e o time comercial retorna em até **1 dia útil** — o **plantão 24h** permanece ativo para emergências de clientes com contrato.';
+        }
+
+        function atualizarStatusDoChat() {
+            const statusEl = document.getElementById('chatStatus');
+            if (!statusEl) return;
+            statusEl.textContent = dentroDoHorarioComercial()
+                ? 'Online agora'
+                : 'Fora do horário · plantão 24h ativo';
+        }
+
+        // Classifica o lead como Quente/Morno/Frio pelos critérios do playbook
+        // comercial (necessidade, prazo e autoridade). A classificação segue junto
+        // com o lead para o time priorizar o retorno; o visitante não a vê.
+        const respostasVagas = ['nao sei', 'nada', 'so pesquisando', 'pesquisando', 'curiosidade', 'so olhando', 'teste', 'informacao', 'informacoes', 'saber mais'];
+
+        // Só conta como "sem dor clara" a resposta curta e genérica. As mesmas
+        // palavras dentro de uma frase descritiva ("quero informação sobre trocar
+        // a portaria") descrevem uma necessidade real e não podem esfriar o lead.
+        function descreveNecessidade(dor) {
+            const frase = frasePesquisavel(dor || '');
+            const texto = frase.trim();
+            if (texto.length < 8) return false;
+            const ehRespostaCurta = texto.split(' ').length <= 4;
+            return !(ehRespostaCurta && respostasVagas.some(vaga => contemExpressao(frase, vaga)));
+        }
+
+        function classificarLead(data) {
+            const dorConcreta = descreveNecessidade(data.dor);
+            const prazoCurto = /30 dias/.test(data.prazo || '');
+            const participaDaDecisao = (data.decisor || '').startsWith('Decide');
+            const apenasPesquisando = data.decisor === 'Apenas pesquisando';
+            const motivos = [];
+            let classificacao;
+
+            if (apenasPesquisando || !dorConcreta) {
+                classificacao = 'Frio';
+                motivos.push(apenasPesquisando ? 'está apenas pesquisando' : 'não descreveu uma necessidade clara');
+            } else if (prazoCurto && participaDaDecisao) {
+                classificacao = 'Quente';
+                motivos.push('necessidade concreta', 'prazo de até 30 dias', 'participa da decisão');
+            } else {
+                classificacao = 'Morno';
+                if (!prazoCurto) motivos.push('prazo longo ou indefinido');
+                if (!participaDaDecisao) motivos.push('decisão passa por outras pessoas');
+            }
+            if (data.servico === 'Pacote Integrado') motivos.push('interesse no Pacote Integrado (ticket maior)');
+
+            return { classificacao, justificativa: motivos.join('; ') };
+        }
 
         const chatWindowEl = document.getElementById('chatbotWindow');
         const chatMessagesEl = document.getElementById('chatMessages');
@@ -2722,6 +2940,18 @@
             return el;
         }
 
+        function renderChatOptions(options) {
+            chatOptionsEl.innerHTML = '';
+            (options || []).forEach(option => {
+                const btn = document.createElement('button');
+                btn.className = 'chat-option';
+                btn.type = 'button';
+                btn.textContent = option.text;
+                btn.addEventListener('click', () => chooseChatOption(option));
+                chatOptionsEl.appendChild(btn);
+            });
+        }
+
         function renderChatStep(stepKey) {
             const flow = chatFlows[stepKey];
             if (!flow) return;
@@ -2735,23 +2965,18 @@
                 typing.remove();
                 const message = typeof flow.message === 'function' ? flow.message(chatState.data) : flow.message;
                 addChatMessage(message, 'bot');
-                (flow.options || []).forEach((option, index) => {
-                    const btn = document.createElement('button');
-                    btn.className = 'chat-option';
-                    btn.type = 'button';
-                    btn.textContent = option.text;
-                    btn.addEventListener('click', () => chooseChatOption(index));
-                    chatOptionsEl.appendChild(btn);
-                });
+                renderChatOptions(flow.options);
                 chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
             }, 650);
         }
 
         // Entrega ao Netlify o lead que o atendente virtual acabou de coletar,
-        // para que a conversa não se perca quando o visitante fecha a janela.
+        // já classificado, para que a conversa não se perca quando o visitante
+        // fecha a janela e para que o time saiba o que priorizar.
         async function enviarLeadDoChat() {
             if (chatState.leadEnviado) return;
             chatState.leadEnviado = true;
+            const qualificacao = classificarLead(chatState.data);
             try {
                 await enviarParaNetlify({
                     'form-name': 'orcamento-chat',
@@ -2760,7 +2985,12 @@
                     empresa: chatState.data.empresa || '',
                     tipo: chatState.data.tipo || '',
                     tamanho: chatState.data.tamanho || '',
+                    dor: chatState.data.dor || '',
+                    prazo: chatState.data.prazo || '',
+                    decisor: chatState.data.decisor || '',
                     contato: chatState.data.contato || '',
+                    classificacao: qualificacao.classificacao,
+                    qualificacao: qualificacao.justificativa,
                     origem: 'Atendente virtual do site'
                 });
             } catch (erro) {
@@ -2770,9 +3000,7 @@
             }
         }
 
-        function chooseChatOption(index) {
-            const flow = chatFlows[chatState.step];
-            const option = flow && flow.options ? flow.options[index] : null;
+        function chooseChatOption(option) {
             if (!option) return;
             addChatMessage(option.text, 'user');
             if (option.data) Object.assign(chatState.data, option.data);
@@ -2792,10 +3020,20 @@
                 renderChatStep(flow.next);
                 return;
             }
+            const assunto = encontrarAssunto(value);
+            if (assunto) {
+                renderChatStep(assunto.next);
+                return;
+            }
             const typing = showChatTyping();
             setTimeout(() => {
                 typing.remove();
-                addChatMessage('Para agilizar seu atendimento, escolha uma das opções acima 👆 ou fale direto com nossa equipe no **(41) 99981-8412**.', 'bot');
+                addChatMessage('Essa eu não tenho confirmada por aqui — e prefiro não chutar informação. 😊\n\nUm consultor consegue responder com precisão pelo **(41) 99981-8412**. Enquanto isso, posso ajudar com algum destes assuntos?', 'bot');
+                renderChatOptions([
+                    { text: '💰 Quero um orçamento', next: 'servico' },
+                    { text: '❓ Tirar dúvidas', next: 'duvidas' },
+                    { text: '📞 Falar com consultor', next: 'contato_direto' }
+                ]);
             }, 650);
         }
 
@@ -2825,6 +3063,8 @@
             renderChatStep(stepKey);
             chatInputEl.focus();
         }
+
+        atualizarStatusDoChat();
     </script>
 </body>
 </html>
