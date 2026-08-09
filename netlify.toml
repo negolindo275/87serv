@@ -1,6 +1,14 @@
 [build]
   publish = "."
 
+# O site é publicado a partir da raiz do repositório, então os arquivos de
+# migração do banco ficariam acessíveis pela web. Bloqueia esse caminho.
+[[redirects]]
+  from = "/netlify/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
 [[headers]]
   for = "/assets/*"
   [headers.values]
