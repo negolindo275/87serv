@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://87ss.netlify.app/sitemap.xml
