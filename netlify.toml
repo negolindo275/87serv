@@ -1,5 +1,6 @@
 [build]
-  publish = "."
+  publish = ".site"
+  command = "node scripts/preparar-site.mjs"
 
 [[headers]]
   for = "/assets/*"

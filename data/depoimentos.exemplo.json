@@ -1,0 +1,68 @@
+[
+  {
+    "id": "exemplo-ficticio-1",
+    "nome": null,
+    "cargo": "Cargo fictício para teste",
+    "empresa": null,
+    "segmento": "Outro",
+    "cidade": "Cidade fictícia",
+    "servico": "Serviço fictício para teste",
+    "texto": "EXEMPLO FICTÍCIO 1 — texto exclusivo para testar o layout, sem experiência real de cliente.",
+    "foto": null,
+    "autoriza_nome": false,
+    "autoriza_foto": false,
+    "data_autorizacao": null,
+    "comprovante": null,
+    "publicado": false,
+    "exemplo": true,
+    "case": {
+      "problema": "EXEMPLO FICTÍCIO: problema para teste.",
+      "solucao": "EXEMPLO FICTÍCIO: solução para teste.",
+      "resultado": "EXEMPLO FICTÍCIO: resultado para teste."
+    }
+  },
+  {
+    "id": "exemplo-ficticio-2",
+    "nome": null,
+    "cargo": "Cargo fictício para teste",
+    "empresa": null,
+    "segmento": "Outro",
+    "cidade": "Cidade fictícia",
+    "servico": "Serviço fictício para teste",
+    "texto": "EXEMPLO FICTÍCIO 2 — texto exclusivo para testar o layout, sem experiência real de cliente.",
+    "foto": null,
+    "autoriza_nome": false,
+    "autoriza_foto": false,
+    "data_autorizacao": null,
+    "comprovante": null,
+    "publicado": false,
+    "exemplo": true,
+    "case": {
+      "problema": "EXEMPLO FICTÍCIO: problema para teste.",
+      "solucao": "EXEMPLO FICTÍCIO: solução para teste.",
+      "resultado": "EXEMPLO FICTÍCIO: resultado para teste."
+    }
+  },
+  {
+    "id": "exemplo-ficticio-3",
+    "nome": null,
+    "cargo": "Cargo fictício para teste",
+    "empresa": null,
+    "segmento": "Outro",
+    "cidade": "Cidade fictícia",
+    "servico": "Serviço fictício para teste",
+    "texto": "EXEMPLO FICTÍCIO 3 — texto exclusivo para testar o layout, sem experiência real de cliente.",
+    "foto": null,
+    "autoriza_nome": false,
+    "autoriza_foto": false,
+    "data_autorizacao": null,
+    "comprovante": null,
+    "publicado": false,
+    "exemplo": true,
+    "case": {
+      "problema": "EXEMPLO FICTÍCIO: problema para teste.",
+      "solucao": "EXEMPLO FICTÍCIO: solução para teste.",
+      "resultado": "EXEMPLO FICTÍCIO: resultado para teste."
+    }
+  }
+]

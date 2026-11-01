@@ -6,6 +6,7 @@
     <title>Portaria, Limpeza e Manutenção em Curitiba | 87 Serviços e Soluções</title>
     <meta name="description" content="Segurança, facilities, paisagismo, limpeza e manutenção integrados em Curitiba e região metropolitana. Plantão 24h e visita técnica gratuita. Peça seu orçamento com a 87 Serviços e Soluções.">
     <script src="/analytics.js" defer></script>
+    <script type="module" src="/depoimentos.js"></script>
     <link rel="stylesheet" href="/site-extras.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1816,9 +1817,10 @@
             <li><a href="#conceito">Conceito</a></li>
             <li><a href="#servicos">Serviços</a></li>
             <li><a href="#setores">Setores</a></li>
-            <li><a href="#casos">Casos e Resultados</a></li>
+            <li hidden><a href="#casos">Casos e Resultados</a></li>
                     <li><a href="#processo">Como Trabalhamos</a></li>
             <li><a href="#diferenciais">Diferenciais</a></li>
+            <li id="depoimentos-menu" hidden><a href="#depoimentos">Quem confia na 87</a></li>
             <li><a href="#faq">Dúvidas</a></li>
             <li><a href="#contato">Contato</a></li>
             <li><a href="#contato" class="nav-cta">Solicitar Orçamento</a></li>
@@ -1900,17 +1902,17 @@
             <div class="concept-card animate-on-scroll">
                 <div class="concept-icon"><i class="fas fa-cogs" aria-hidden="true"></i></div>
                 <h3>Um Ambiente Bem Cuidado as Faz Ficar</h3>
-                <p>Facilities completos que garantem o funcionamento perfeito de toda a infraestrutura, manutenção preventiva e gestão eficiente de recursos.</p>
+                <p>Facilities com manutenção preventiva e gestão de recursos da infraestrutura.</p>
             </div>
             <div class="concept-card animate-on-scroll">
                 <div class="concept-icon"><i class="fas fa-leaf" aria-hidden="true"></i></div>
                 <h3>Um Jardim Vibrante as Inspira</h3>
-                <p>Paisagismo transformador que embeleza, valoriza e cria ambientes inspiradores para pessoas viverem e trabalharem melhor.</p>
+                <p>Paisagismo com projetos e manutenção de áreas verdes.</p>
             </div>
         </div>
         <div class="concept-sincronia animate-on-scroll">
             <h3><i class="fas fa-sync-alt" aria-hidden="true"></i> A Perfeita Sincronia</h3>
-            <p>Segurança, facilities e paisagismo são a <strong>espinha dorsal de sucesso</strong> para qualquer empreendimento. Quando trabalham em conjunto, criam ambientes que atraem, retêm e inspiram.</p>
+            <p>Integramos segurança, facilities e paisagismo na rotina do empreendimento.</p>
         </div>
     </section>
 
@@ -1937,7 +1939,7 @@
             <div class="service-card animate-on-scroll" role="button" tabindex="0" data-servico="paisagismo">
                 <div class="service-icon"><i class="fas fa-leaf" aria-hidden="true"></i></div>
                 <h3>Paisagismo</h3>
-                <p>Embelezamos e valorizamos. Projetos de jardinagem, manutenção de áreas verdes, paisagismo corporativo e residencial.</p>
+                <p>Projetos de jardinagem, manutenção de áreas verdes, paisagismo corporativo e residencial.</p>
                 <span class="service-cta">Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
             </div>
             <div class="service-card animate-on-scroll" role="button" tabindex="0" data-servico="limpeza">
@@ -1961,7 +1963,7 @@
             <div class="service-card animate-on-scroll" role="button" tabindex="0" data-servico="terceirizados">
                 <div class="service-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
                 <h3>Serviços Terceirizados</h3>
-                <p>Profissionais certos, resultados melhores. Terceirização de mão de obra qualificada para diversos setores.</p>
+                <p>Terceirização de mão de obra para diversos setores.</p>
                 <span class="service-cta">Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
             </div>
         </div>
@@ -2003,7 +2005,7 @@
             <div class="setor-card animate-on-scroll">
                 <i class="fas fa-store" aria-hidden="true"></i>
                 <h3>Varejo e Shoppings</h3>
-                <p>Fluxo intenso de público exige segurança preventiva, limpeza contínua em horário de operação e paisagismo que valoriza a experiência de compra.</p>
+                <p>Segurança preventiva, limpeza em horário de operação e paisagismo para áreas comerciais.</p>
             </div>
             <div class="setor-card animate-on-scroll">
                 <i class="fas fa-dumbbell" aria-hidden="true"></i>
@@ -2024,7 +2026,7 @@
     </section>
 
     <!-- CASOS: modelos sem resultados ou clientes fictícios -->
-    <section class="results-section" id="casos">
+    <section class="results-section" id="casos" hidden>
         <div class="section-header">
             <div class="section-eyebrow">Na prática</div>
             <h2>Casos e Resultados</h2>
@@ -2061,17 +2063,6 @@
                     <div><dt>Resultado</dt><dd>PREENCHER</dd></div>
                 </dl>
             </article>
-        </div>
-        <div class="testimonials" role="region" aria-roledescription="carrossel" aria-labelledby="testimonials-title">
-            <div class="results-subheading">
-                <h3 id="testimonials-title">Depoimentos</h3>
-                <div class="carousel-controls">
-                    <button type="button" disabled aria-label="Depoimento anterior">←</button>
-                    <button type="button" disabled aria-label="Próximo depoimento">→</button>
-                </div>
-            </div>
-            <!-- Adicionar slides e habilitar os controles somente com depoimentos reais autorizados. -->
-            <div class="empty-evidence"><span class="fill-label">PREENCHER</span><p>Nenhum depoimento cadastrado. PREENCHER com depoimentos reais autorizados.</p></div>
         </div>
         <div class="before-after" aria-labelledby="before-after-title">
             <h3 id="before-after-title">Antes e depois</h3>
@@ -2142,15 +2133,15 @@
             <div class="diferencial-item animate-on-scroll">
                 <div class="diferencial-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
                 <div class="diferencial-text">
-                    <h3>Valorização Patrimonial</h3>
-                    <p>Nossos serviços aumentam o valor do seu empreendimento no mercado.</p>
+                    <h3>Conservação Patrimonial</h3>
+                    <p>Serviços de conservação e manutenção do empreendimento.</p>
                 </div>
             </div>
             <div class="diferencial-item animate-on-scroll">
                 <div class="diferencial-icon"><i class="fas fa-smile" aria-hidden="true"></i></div>
                 <div class="diferencial-text">
                     <h3>Bem-Estar e Inspiração</h3>
-                    <p>Ambientes que inspiram produtividade, saúde e qualidade de vida.</p>
+                    <p>Cuidado com a limpeza, a conservação e as áreas verdes dos ambientes.</p>
                 </div>
             </div>
             <div class="diferencial-item animate-on-scroll">
@@ -2171,11 +2162,26 @@
                 <div class="diferencial-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
                 <div class="diferencial-text">
                     <h3>Parceria de Longo Prazo</h3>
-                    <p>Construímos relacionamentos duradouros baseados em resultados.</p>
+                    <p>Buscamos uma parceria com acompanhamento ao longo do contrato.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="depoimentos-section" id="depoimentos" aria-label="Depoimentos de clientes" aria-labelledby="depoimentos-titulo" hidden>
+        <div class="section-header">
+            <h2 id="depoimentos-titulo">Quem confia na 87</h2>
+        </div>
+        <div class="depoimentos-grid" id="depoimentos-cartoes"></div>
+        <div class="depoimentos-actions">
+            <a href="#contato" class="btn btn-primary" id="depoimentos-cta">Pedir orçamento</a>
+            <a id="google-avaliacoes" class="btn btn-outline" hidden>Ver avaliações no Google</a>
+        </div>
+    </section>
+    <!-- Só habilitar a coleta após solicitação expressa. -->
+    <div class="depoimentos-actions" id="coleta-depoimentos" hidden>
+        <a id="enviar-depoimento" class="btn btn-outline" href="https://wa.me/5541999818412?text=Ol%C3%A1%2C%20quero%20enviar%20um%20depoimento%20sobre%20o%20servi%C3%A7o%20da%2087.%20Como%20posso%20registrar%20minha%20experi%C3%AAncia%20e%20minhas%20prefer%C3%AAncias%20de%20autoriza%C3%A7%C3%A3o%3F" target="_blank" rel="noopener noreferrer">Enviar depoimento</a>
+    </div>
 
     <!-- PACOTE INTEGRADO -->
     <section class="integrado">
@@ -2204,7 +2210,7 @@
         <div class="section-header animate-on-scroll">
             <div class="section-eyebrow">Perguntas Frequentes</div>
             <h2>Dúvidas Antes de Pedir um Orçamento</h2>
-            <p>Reunimos as perguntas que mais recebemos de síndicos, gestores prediais e responsáveis por facilities.</p>
+            <p>Confira informações sobre orçamento, contratos e operação.</p>
         </div>
         <div class="faq-list animate-on-scroll">
             <details class="faq-item">
@@ -2378,6 +2384,7 @@
                     <li><a href="#setores">Setores Atendidos</a></li>
                     <li><a href="#processo">Como Trabalhamos</a></li>
                     <li><a href="#diferenciais">Diferenciais</a></li>
+                    <li id="depoimentos-rodape" hidden><a href="#depoimentos">Quem confia na 87</a></li>
                     <li><a href="#faq">Perguntas Frequentes</a></li>
                     <li><a href="/trabalhe-conosco">Trabalhe Conosco</a></li>
                     <li><a href="/privacidade">Política de Privacidade</a></li>
@@ -2808,7 +2815,7 @@
                 ]
             },
             objecao_preco: {
-                message: '💰 **Sobre o valor**\n\nNão trabalhamos com tabela fechada, e isso é proposital: o preço depende da **área**, do **número de postos** e da **frequência** do serviço. Fechar um número antes de conhecer o local levaria você a pagar por algo que talvez nem precise.\n\nO caminho é simples e sem custo:\n1️⃣ **Visita técnica gratuita e sem compromisso**\n2️⃣ Proposta sob medida em até **2 dias úteis**\n\nVale considerar também o custo de não resolver: rotatividade de porteiro, passivo trabalhista de equipe irregular e desvalorização do imóvel por falta de manutenção. E no **Pacote Integrado** um único contrato reduz o tempo que o síndico ou gestor gasta administrando seis fornecedores diferentes.',
+                message: '💰 **Sobre o valor**\n\nNão trabalhamos com tabela fechada, e isso é proposital: o preço depende da **área**, do **número de postos** e da **frequência** do serviço. Fechar um número antes de conhecer o local levaria você a pagar por algo que talvez nem precise.\n\nO caminho é simples e sem custo:\n1️⃣ **Visita técnica gratuita e sem compromisso**\n2️⃣ Proposta sob medida em até **2 dias úteis**\n\nVale considerar também o custo de não resolver: rotatividade de porteiro, passivo trabalhista de equipe irregular e desvalorização do imóvel por falta de manutenção. E no **Pacote Integrado** um único contrato reúne a administração dos serviços contratados.',
                 options: [
                     { text: '✅ Quero a visita técnica gratuita', next: 'servico' },
                     { text: '📞 Falar com consultor', next: 'contato_direto' },
@@ -2816,7 +2823,7 @@
                 ]
             },
             desconto: {
-                message: 'Sobre **desconto ou condição especial**, eu não tenho autonomia para negociar — isso é sempre decidido por um consultor humano, junto com a proposta.\n\nO que posso fazer é registrar seu pedido e agilizar o contato do time comercial. Na prática, o maior ganho costuma vir do **Pacote Integrado**: reunir serviços em um só contrato reduz o custo total de gestão.',
+                message: 'Sobre **desconto ou condição especial**, eu não tenho autonomia para negociar — isso é sempre decidido por um consultor humano, junto com a proposta.\n\nO que posso fazer é registrar seu pedido e agilizar o contato do time comercial. O **Pacote Integrado** permite reunir serviços em um só contrato.',
                 options: [
                     { text: '📞 Falar com consultor', next: 'contato_direto' },
                     { text: '💰 Quero um orçamento', next: 'servico' }
@@ -2872,7 +2879,7 @@
                 ]
             },
             duvida_varios: {
-                message: '📦 **Vários serviços, um só contrato**\n\nSim — e é o formato que mais recomendamos. O **Pacote Integrado 87** reúne segurança, facilities, paisagismo, limpeza e manutenção com:\n\n✅ Gestão centralizada\n✅ Um único ponto de contato\n✅ Uma só fatura para administrar\n✅ Relatórios consolidados no mesmo documento\n\nAlém da praticidade, isso reduz o tempo que o síndico ou gestor gasta coordenando fornecedores diferentes.',
+                message: '📦 **Vários serviços, um só contrato**\n\nSim — e é o formato que mais recomendamos. O **Pacote Integrado 87** reúne segurança, facilities, paisagismo, limpeza e manutenção com:\n\n✅ Gestão centralizada\n✅ Um único ponto de contato\n✅ Uma só fatura para administrar\n✅ Relatórios consolidados no mesmo documento\n\nOs serviços contratados ficam reunidos em uma só gestão.',
                 options: [
                     { text: '💰 Quero um orçamento do pacote', next: 'coleta_dados', data: { servico: 'Pacote Integrado' } },
                     { text: '❓ Outras dúvidas', next: 'duvidas' }
