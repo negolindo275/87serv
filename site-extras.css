@@ -1,0 +1,21 @@
+[hidden] { display: none !important; }
+.cookie-banner { position: fixed; bottom: 12px; left: 12px; z-index: 10000; max-width: min(480px, calc(100% - 24px)); padding: 18px; color: #eee; background: #172126; border: 1px solid #819195; border-radius: 12px; box-shadow: 0 8px 30px #0005; font: 14px/1.5 Montserrat, sans-serif; }
+.cookie-banner p { margin: 0 0 12px; }
+.cookie-banner a, .legal-page a { color: #85d0ab; }
+.cookie-banner button, .cookie-settings { cursor: pointer; padding: 10px 14px; border-radius: 6px; border: 1px solid #819195; color: #eee; background: #263b32; font: inherit; }
+.cookie-banner button + button { background: transparent; }
+.cookie-settings { display: block; margin: 20px auto; font-size: 12px; }
+#formConfirmation { margin-top: 20px; padding: 20px; border: 1px solid var(--green, #85d0ab); border-radius: 10px; }
+#formConfirmation .btn { margin-top: 15px; }
+.legal-page { margin: 0; background: #0b1115; color: #eee; font: 16px/1.7 Montserrat, sans-serif; }
+.legal-page main { max-width: 800px; margin: auto; padding: 40px 24px; }
+.legal-page h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.2; }
+.legal-page h2 { margin-top: 32px; font-size: 22px; }
+.legal-page label { display: block; margin-top: 18px; }
+.legal-page input:not([type=checkbox]), .legal-page textarea { display: block; box-sizing: border-box; width: 100%; padding: 12px; margin: 6px 0; color: #eee; background: #172126; border: 1px solid #819195; border-radius: 6px; font: inherit; }
+.legal-page button[type=submit], .legal-page .action { display: inline-block; margin-top: 20px; background: #197449; color: white; padding: 14px 20px; border: 0; border-radius: 6px; font: inherit; cursor: pointer; }
+.legal-page .notice { padding: 14px; border: 1px solid #d3ac56; }
+.hp-field { display: none; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+
+.form-consent a, .chatbot-window a { color: #85d0ab; text-decoration: underline; }
