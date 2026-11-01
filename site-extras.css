@@ -60,3 +60,20 @@
     .results-section { padding-block: 64px; }
     .empty-evidence { padding: 24px; }
 }
+
+/* Depoimentos autorizados: acompanha a paleta e os espaçamentos existentes. */
+.depoimentos-section { padding: 100px 5%; background: var(--dark-light); }
+.depoimentos-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 1200px; margin: auto; }
+.depoimento-card { margin: 0; padding: 28px; border: 1px solid var(--gold-line); border-radius: 16px; background: var(--dark-card); overflow-wrap: anywhere; }
+.depoimento-card blockquote { margin: 0 0 24px; line-height: 1.8; }
+.depoimento-card figcaption { display: grid; gap: 8px; font-size: .85rem; line-height: 1.7; }
+.depoimento-card figcaption span { color: var(--gray); }
+.depoimento-card img { border-radius: 50%; object-fit: cover; }
+.depoimento-card details { margin-top: 24px; border-top: 1px solid var(--gold-line); padding-top: 16px; }
+.depoimento-card summary { cursor: pointer; color: var(--gold-light); min-height: 44px; padding-block: 10px; }
+.depoimento-card dt { margin-top: 16px; font-weight: 600; }
+.depoimento-card dd { margin: 6px 0 0; line-height: 1.7; color: var(--gray); }
+.depoimentos-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin: 36px auto 0; }
+.depoimentos-section a:focus-visible, .depoimento-card summary:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 5px; }
+@media (max-width: 900px) { .depoimentos-grid { grid-template-columns: 1fr; } }
+@media (max-width: 540px) { .depoimentos-section { padding-block: 64px; } }

@@ -1,0 +1,78 @@
+const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const { default: AxeBuilder } = await import(process.env.AXE_MODULE || '@axe-core/playwright');
+import { readFile } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { dadosPublicos } from '../scripts/depoimentos-dados.mjs';
+const base = 'http://localhost:8889';
+const reais = dadosPublicos(JSON.parse(await readFile(new URL('../data/depoimentos.json', import.meta.url), 'utf8')));
+const exemplos = JSON.parse(await readFile(new URL('../data/depoimentos.exemplo.json', import.meta.url), 'utf8'));
+// Dados de apresentação simulados apenas pela rede deste navegador de teste.
+const cartoes = exemplos.map(item => ({ id: item.id, autor: 'EXEMPLO FICTÍCIO — identificação de teste', segmento: item.segmento, cidade: item.cidade, texto: item.texto, foto: null, case: item.case }));
+const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
+for (const width of [375, 1440]) {
+    const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
+    const page = await context.newPage();
+    const erros = [];
+    page.on('pageerror', error => erros.push(error.message));
+    page.on('console', message => { if (message.type() === 'error') erros.push(message.text()); });
+    let dados = reais;
+    const requests = [];
+    page.on('request', request => requests.push(request.url()));
+    await page.route('**/depoimentos-publicos.json', route => route.fulfill({ json: dados }));
+    await page.goto(base, { waitUntil: 'networkidle' });
+    assert.equal(await page.locator('#depoimentos').isVisible(), false);
+    assert.equal(await page.locator('#depoimentos-menu').isVisible(), false);
+    assert.equal(await page.locator('#casos').isVisible(), false);
+    assert.equal(await page.locator('#coleta-depoimentos').isVisible(), false);
+    assert.equal(await page.locator('#google-avaliacoes').isVisible(), false);
+    dados = cartoes;
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.locator('#depoimentos').scrollIntoViewIfNeeded();
+    assert.equal(await page.locator('#depoimentos figure').count(), 3);
+    assert.equal(await page.locator('#depoimentos blockquote').count(), 3);
+    assert.equal(await page.locator('#depoimentos figcaption').count(), 3);
+    const caixas = await page.locator('#depoimentos figure').evaluateAll(items => items.map(item => ({ x: item.getBoundingClientRect().x, y: item.getBoundingClientRect().y })));
+    if (width === 375) assert.ok(caixas.every(item => item.x === caixas[0].x) && caixas[1].y > caixas[0].y);
+    else assert.ok(caixas.every(item => item.y === caixas[0].y) && caixas[1].x > caixas[0].x);
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    const summary = page.locator('#depoimentos summary').first();
+    await summary.focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await summary.evaluate(el => el.parentElement.open), true);
+    await page.keyboard.press('Space');
+    assert.equal(await summary.evaluate(el => el.parentElement.open), false);
+    // Verifica árvore de acessibilidade exposta aos leitores de tela.
+    const axe = await new AxeBuilder({ page }).include('#depoimentos').withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+    assert.deepEqual(axe.violations.map(item => item.id), []);
+    const ids = await page.locator('[id]').evaluateAll(elements => elements.map(el => el.id));
+    assert.equal(new Set(ids).size, ids.length);
+    const arvore = await page.locator('#depoimentos').ariaSnapshot();
+    assert.ok(arvore.includes('Quem confia na 87') && arvore.includes('blockquote') && arvore.includes('Ver o caso'));
+    const invalidos = await page.locator('a[href^="#"]').evaluateAll(links => links.filter(link => link.getAttribute('href') !== '#' && !document.getElementById(link.hash.slice(1))).map(link => link.getAttribute('href')));
+    assert.deepEqual(invalidos, []);
+    await page.evaluate(() => { window.eventosTeste = []; window.track87 = (...args) => window.eventosTeste.push(args); });
+    const cta = page.locator('#depoimentos-cta');
+    await cta.focus();
+    await page.keyboard.press('Enter');
+    assert.equal(new URL(page.url()).hash, '#contato');
+    assert.equal(await page.evaluate(() => window.eventosTeste[0][0]), 'clique_cta_depoimentos');
+    assert.ok(!requests.some(url => url.includes('depoimentos.exemplo') || url.includes('/data/')));
+    await page.locator('#depoimentos').screenshot({ path: `/tmp/depoimentos-${width}.png` });
+    console.log(JSON.stringify({ width, colunas: width === 375 ? 1 : 3, erros, acessibilidade: 'semântica e teclado verificados', links: 'ok' }));
+    // URL do Google preenchida e coleta explicitamente habilitada: somente nesta resposta simulada.
+    await page.route('**/depoimentos-config.js', route => route.fulfill({ contentType: 'text/javascript', body: `export const GOOGLE_AVALIACOES_URL = 'https://www.google.com/maps'; export const EXIBIR_COLETA_DEPOIMENTOS = true;` }));
+    await page.reload({ waitUntil: 'networkidle' });
+    assert.equal(await page.locator('#google-avaliacoes').isVisible(), true);
+    assert.equal(await page.locator('#coleta-depoimentos').isVisible(), true);
+    assert.ok((await page.locator('#enviar-depoimento').getAttribute('href')).startsWith('https://wa.me/5541999818412?text='));
+    // Foto local e os atributos exigidos; identidade fictícia de teste.
+    await page.evaluate(async item => { const modulo = await import('/depoimentos.js'); modulo.renderizarDepoimentos([{ ...item, foto: 'assets/logo-mark.png' }]); }, cartoes[0]);
+    const foto = page.locator('#depoimentos img');
+    assert.equal(await foto.getAttribute('loading'), 'lazy');
+    assert.equal(await foto.getAttribute('width'), '64');
+    assert.equal(await foto.getAttribute('height'), '64');
+    assert.ok(await foto.getAttribute('alt'));
+    assert.deepEqual(erros, []);
+    await context.close();
+}
+await browser.close();
