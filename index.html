@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>87 Serviços e Soluções | Segurança, Facilities e Paisagismo em Curitiba</title>
+    <title>Portaria, Limpeza e Manutenção em Curitiba | 87 Serviços e Soluções</title>
     <meta name="description" content="Segurança, facilities, paisagismo, limpeza e manutenção integrados em Curitiba e região metropolitana. Plantão 24h e visita técnica gratuita. Peça seu orçamento com a 87 Serviços e Soluções.">
+    <script src="/analytics.js" defer></script>
+    <link rel="stylesheet" href="/site-extras.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -44,12 +46,12 @@
       "description": "Serviços integrados de segurança, facilities, paisagismo, limpeza, manutenção predial e terceirização de mão de obra em Curitiba e região metropolitana.",
       "taxID": "62.970.062/0001-83",
       "vatID": "62.970.062/0001-83",
-      "telephone": "+55-41-99981-8412",
-      "priceRange": "$$",
+      "telephone": ["+55-41-99981-8412", "+55-41-99981-9750"],
       "url": "https://87ss.netlify.app/",
       "image": "https://87ss.netlify.app/assets/logo-full.png",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "PREENCHER — endereço completo",
         "addressLocality": "Curitiba",
         "addressRegion": "PR",
         "addressCountry": "BR"
@@ -824,7 +826,7 @@
             font-size: 1.1rem;
         }
 
-        .diferencial-text h4 {
+        .diferencial-text h3 {
             font-size: 1rem;
             margin-bottom: 0.3rem;
         }
@@ -1287,7 +1289,7 @@
             line-height: 1.7;
         }
 
-        .footer-column h4 {
+        .footer-column h3 {
             font-size: 1rem;
             margin-bottom: 1.2rem;
             color: var(--gold);
@@ -1452,7 +1454,7 @@
             font-size: 1.3rem;
         }
 
-        .chatbot-header-info h4 {
+        .chatbot-header-info h3 {
             font-size: 1rem;
             margin-bottom: 2px;
         }
@@ -1645,9 +1647,9 @@
         }
 
         .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .animate-on-scroll.visible {
@@ -1803,7 +1805,7 @@
 
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
-        <a href="#home" class="logo" aria-label="87 Serviços e Soluções — ir para o início">
+        <a href="#home" class="logo" aria-label="87 Serviços e Soluções — Segurança • Facilities • Paisagismo — ir para o início">
             <img src="assets/logo-mark.png" alt="" class="logo-img" width="262" height="186">
             <div class="logo-text">
                 SERVIÇOS E SOLUÇÕES
@@ -1835,10 +1837,10 @@
                 Sinergia Urbana & Sincronia Profissional
             </div>
             <h1>
-                Onde a Gestão de <span class="highlight">Segurança</span> Encontra o <span class="highlight">Bem-Estar</span>
+                Portaria, limpeza, manutenção e <span class="highlight">jardinagem</span> em um único contrato
             </h1>
             <p>
-                Soluções integradas em segurança inteligente, facilities e paisagismo que transformam ambientes e valorizam empreendimentos em Curitiba e região metropolitana.
+                Visita técnica gratuita em Curitiba e região. Serviços integrados para condomínios, empresas e indústrias, com um único ponto de contato.
             </p>
             <div class="hero-buttons">
                 <a href="#contato" class="btn btn-primary">
@@ -1856,15 +1858,15 @@
             </div>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-number" data-count="6">0</div>
+                    <div class="stat-number" data-count="6">6</div>
                     <div class="stat-label">Serviços Integrados</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="24" data-suffix="h">0</div>
+                    <div class="stat-number" data-count="24" data-suffix="h">24h</div>
                     <div class="stat-label">Plantão para Emergências</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="7" data-suffix=" dias">0</div>
+                    <div class="stat-number" data-count="7" data-suffix=" dias">7 dias</div>
                     <div class="stat-label">Para Iniciar a Operação</div>
                 </div>
             </div>
@@ -1897,7 +1899,7 @@
         </div>
         <div class="concept-sincronia animate-on-scroll">
             <h3><i class="fas fa-sync-alt" aria-hidden="true"></i> A Perfeita Sincronia</h3>
-            <p>Segurança, Facilities e Paisagismo. Uma são a <strong>espinha dorsal de sucesso</strong> para qualquer empreendimento. Quando trabalham em conjunto, criam ambientes que atraem, retêm e inspiram.</p>
+            <p>Segurança, facilities e paisagismo são a <strong>espinha dorsal de sucesso</strong> para qualquer empreendimento. Quando trabalham em conjunto, criam ambientes que atraem, retêm e inspiram.</p>
         </div>
     </section>
 
@@ -2041,42 +2043,42 @@
             <div class="diferencial-item animate-on-scroll">
                 <div class="diferencial-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
                 <div class="diferencial-text">
-                    <h4>Mais Segurança e Tranquilidade</h4>
+                    <h3>Mais Segurança e Tranquilidade</h3>
                     <p>Protocolos rigorosos e tecnologia de ponta para sua total tranquilidade.</p>
                 </div>
             </div>
             <div class="diferencial-item animate-on-scroll">
                 <div class="diferencial-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
                 <div class="diferencial-text">
-                    <h4>Valorização Patrimonial</h4>
+                    <h3>Valorização Patrimonial</h3>
                     <p>Nossos serviços aumentam o valor do seu empreendimento no mercado.</p>
                 </div>
             </div>
             <div class="diferencial-item animate-on-scroll">
                 <div class="diferencial-icon"><i class="fas fa-smile" aria-hidden="true"></i></div>
                 <div class="diferencial-text">
-                    <h4>Bem-Estar e Inspiração</h4>
+                    <h3>Bem-Estar e Inspiração</h3>
                     <p>Ambientes que inspiram produtividade, saúde e qualidade de vida.</p>
                 </div>
             </div>
             <div class="diferencial-item animate-on-scroll">
                 <div class="diferencial-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
                 <div class="diferencial-text">
-                    <h4>Profissionais Certificados</h4>
+                    <h3>Profissionais Certificados</h3>
                     <p>Equipe treinada e capacitada com certificações atualizadas.</p>
                 </div>
             </div>
             <div class="diferencial-item animate-on-scroll">
                 <div class="diferencial-icon"><i class="fas fa-headset" aria-hidden="true"></i></div>
                 <div class="diferencial-text">
-                    <h4>Atendimento 24h</h4>
+                    <h3>Atendimento 24h</h3>
                     <p>Disponibilidade total para atender emergências e demandas urgentes.</p>
                 </div>
             </div>
             <div class="diferencial-item animate-on-scroll">
                 <div class="diferencial-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
                 <div class="diferencial-text">
-                    <h4>Parceria de Longo Prazo</h4>
+                    <h3>Parceria de Longo Prazo</h3>
                     <p>Construímos relacionamentos duradouros baseados em resultados.</p>
                 </div>
             </div>
@@ -2088,7 +2090,7 @@
         <div class="integrado-band animate-on-scroll">
             <div>
                 <div class="section-eyebrow">Pacote Integrado 87</div>
-                <h2>Cinco Frentes, Um Único Contrato</h2>
+                <h2>Seis Frentes, Um Único Contrato</h2>
                 <p>Contratar segurança, limpeza, manutenção, facilities e paisagismo com fornecedores diferentes significa cinco contratos, cinco faturas e cinco números para ligar quando algo dá errado. O Pacote Integrado 87 reúne tudo em uma só operação.</p>
                 <a href="#contato" class="btn btn-primary">
                     <i class="fas fa-layer-group" aria-hidden="true"></i>
@@ -2223,8 +2225,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="tipo">Tipo de Empreendimento *</label>
-                        <select id="tipo" name="tipo" required>
+                        <label for="tipo">Tipo de Empreendimento (opcional)</label>
+                        <select id="tipo" name="tipo">
                             <option value="">Selecione o tipo</option>
                             <option value="Condomínio Residencial">Condomínio Residencial</option>
                             <option value="Edifício Comercial">Edifício Comercial</option>
@@ -2241,13 +2243,17 @@
                     </div>
                     <div class="form-consent">
                         <input type="checkbox" id="consentimento" name="consentimento" value="Sim" required>
-                        <label for="consentimento">Autorizo a 87 Serviços e Soluções a usar meus dados para entrar em contato sobre esta solicitação, conforme a Lei Geral de Proteção de Dados (LGPD). *</label>
+                        <label for="consentimento">Autorizo a 87 Serviços e Soluções a usar meus dados para entrar em contato sobre esta solicitação, conforme a <a href="/privacidade">Política de Privacidade</a> e a LGPD. *</label>
                     </div>
                     <button type="submit" class="form-submit" id="formSubmitBtn">
                         <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar Solicitação de Orçamento
                     </button>
                     <p class="form-note">Respondemos em até 1 dia útil. Para urgências, use o WhatsApp ou o plantão 24h.</p>
                 </form>
+                <div id="formConfirmation" hidden tabindex="-1" role="status">
+                    <h3>Solicitação enviada!</h3><p>Obrigado pelo contato. Nossa equipe recebeu seu pedido de orçamento.</p>
+                    <a id="continueWhatsapp" class="btn btn-whatsapp" data-local="confirmacao_orcamento" target="_blank" rel="noopener">Continuar no WhatsApp</a>
+                </div>
             </div>
         </div>
     </section>
@@ -2261,7 +2267,7 @@
                 <p>Compromisso com a cidade, respeito com as pessoas, dedicação ao cliente. Soluções integradas que deixam seu empreendimento seguro, funcional e agradável de habitar.</p>
             </div>
             <div class="footer-column">
-                <h4>Soluções</h4>
+                <h3>Soluções</h3>
                 <ul>
                     <li><a href="#servicos">Segurança</a></li>
                     <li><a href="#servicos">Facilities</a></li>
@@ -2272,18 +2278,19 @@
                 </ul>
             </div>
             <div class="footer-column">
-                <h4>Empresa</h4>
+                <h3>Empresa</h3>
                 <ul>
                     <li><a href="#conceito">Nosso Conceito</a></li>
                     <li><a href="#setores">Setores Atendidos</a></li>
                     <li><a href="#processo">Como Trabalhamos</a></li>
                     <li><a href="#diferenciais">Diferenciais</a></li>
                     <li><a href="#faq">Perguntas Frequentes</a></li>
-                    <li><a href="#contato">Trabalhe Conosco</a></li>
+                    <li><a href="/trabalhe-conosco">Trabalhe Conosco</a></li>
+                    <li><a href="/privacidade">Política de Privacidade</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h4>Contato</h4>
+                <h3>Contato</h3>
                 <ul>
                     <li><a href="tel:+5541999818412">(41) 99981-8412</a></li>
                     <li><a href="tel:+5541999819750">(41) 99981-9750</a></li>
@@ -2328,6 +2335,7 @@
         <input name="classificacao">
         <input name="qualificacao">
         <input name="origem">
+        <input name="consentimento">
     </form>
 
     <!-- CHATBOT -->
@@ -2336,13 +2344,14 @@
             <div class="chatbot-header">
                 <div class="chatbot-avatar" aria-hidden="true">🤖</div>
                 <div class="chatbot-header-info">
-                    <h4>Atendente 87</h4>
+                    <h3>Atendente 87</h3>
                     <span id="chatStatus">Online agora</span>
                 </div>
                 <button class="chatbot-close" onclick="toggleChat()" aria-label="Fechar atendente virtual"><i class="fas fa-times" aria-hidden="true"></i></button>
             </div>
             <div class="chatbot-messages" id="chatMessages" aria-live="polite" aria-atomic="false"></div>
             <div class="chatbot-options" id="chatOptions"></div>
+            <p style="padding: 0 16px; font-size: 12px"><a href="/privacidade" target="_blank" rel="noopener">Política de Privacidade</a></p>
             <div class="chatbot-input-area">
                 <label class="sr-only" for="chatInput">Sua mensagem para o atendente virtual</label>
                 <input type="text" class="chatbot-input" id="chatInput" placeholder="Digite sua mensagem..." onkeypress="handleChatKey(event)" autocomplete="off">
@@ -2392,17 +2401,9 @@
                     return;
                 }
 
-                let current = 0;
-                const increment = Math.max(target / 50, 0.02);
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        el.textContent = target + suffix;
-                        clearInterval(timer);
-                    } else {
-                        el.textContent = Math.floor(current) + suffix;
-                    }
-                }, 30);
+                // Animate emphasis only: the real value always remains readable.
+                el.animate([{ opacity: 0.65, transform: 'translateY(4px)' },
+                    { opacity: 1, transform: 'translateY(0)' }], { duration: 600 });
             });
         }, { threshold: 0.5 });
         document.querySelectorAll('.stat-number').forEach(el => counterObserver.observe(el));
@@ -2452,7 +2453,11 @@
 
         // ===== CARDS DE SERVIÇO (clique e teclado) =====
         document.querySelectorAll('.service-card[data-servico]').forEach(card => {
-            const abrir = () => openChat(card.dataset.servico);
+            const abrir = () => {
+                document.getElementById('servico').value = card.querySelector('h3').textContent;
+                document.getElementById('contato').scrollIntoView({ behavior: prefersReducedMotion ? 'instant' : 'smooth' });
+                document.getElementById('servico').focus({ preventScroll: true });
+            };
             card.addEventListener('click', abrir);
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -2499,7 +2504,13 @@
             submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i> Enviando...';
 
             try {
+                const servico = document.getElementById('servico').value;
                 await enviarParaNetlify(new FormData(contactForm));
+                window.track87('envio_formulario', { servico, formulario: 'orcamento' });
+                const confirmation = document.getElementById('formConfirmation');
+                document.getElementById('continueWhatsapp').href = 'https://wa.me/5541999818412?text=' + encodeURIComponent('Olá! Enviei uma solicitação de orçamento para ' + servico + ' pelo site da 87 Serviços e Soluções. Gostaria de continuar o atendimento.');
+                confirmation.hidden = false;
+                confirmation.focus();
                 showToast('✅ Orçamento solicitado com sucesso! Nossa equipe entra em contato em até 1 dia útil.');
                 contactForm.reset();
             } catch (erro) {
@@ -2525,6 +2536,13 @@
         };
 
         const chatFlows = {
+            consentimento_chat: {
+                message: 'Para preparar o orçamento, usaremos os dados informados nesta conversa para entrar em contato. Consulte nossa Política de Privacidade em /privacidade. Você autoriza esse uso?',
+                options: [
+                    { text: 'Autorizo o contato', next: 'coleta_dados', consent: true },
+                    { text: 'Prefiro não informar dados', next: 'welcome' }
+                ]
+            },
             welcome: {
                 message: () => 'Olá! 👋 Sou o Atendente Virtual da **87 Serviços e Soluções**. Estou aqui para ajudar você a encontrar a melhor solução para seu empreendimento. Como posso ajudar?' + avisoDeHorario(),
                 options: [
@@ -2691,7 +2709,7 @@
                 ]
             },
             objecao_preco: {
-                message: '💰 **Sobre o valor**\n\nNão trabalhamos com tabela fechada, e isso é proposital: o preço depende da **área**, do **número de postos** e da **frequência** do serviço. Fechar um número antes de conhecer o local levaria você a pagar por algo que talvez nem precise.\n\nO caminho é simples e sem custo:\n1️⃣ **Visita técnica gratuita e sem compromisso**\n2️⃣ Proposta sob medida em até **2 dias úteis**\n\nVale considerar também o custo de não resolver: rotatividade de porteiro, passivo trabalhista de equipe irregular e desvalorização do imóvel por falta de manutenção. E no **Pacote Integrado** um único contrato reduz o tempo que o síndico ou gestor gasta administrando cinco fornecedores diferentes.',
+                message: '💰 **Sobre o valor**\n\nNão trabalhamos com tabela fechada, e isso é proposital: o preço depende da **área**, do **número de postos** e da **frequência** do serviço. Fechar um número antes de conhecer o local levaria você a pagar por algo que talvez nem precise.\n\nO caminho é simples e sem custo:\n1️⃣ **Visita técnica gratuita e sem compromisso**\n2️⃣ Proposta sob medida em até **2 dias úteis**\n\nVale considerar também o custo de não resolver: rotatividade de porteiro, passivo trabalhista de equipe irregular e desvalorização do imóvel por falta de manutenção. E no **Pacote Integrado** um único contrato reduz o tempo que o síndico ou gestor gasta administrando seis fornecedores diferentes.',
                 options: [
                     { text: '✅ Quero a visita técnica gratuita', next: 'servico' },
                     { text: '📞 Falar com consultor', next: 'contato_direto' },
@@ -2953,6 +2971,9 @@
         }
 
         function renderChatStep(stepKey) {
+            if (stepKey === 'coleta_dados' && !chatState.privacyConsent) {
+                stepKey = 'consentimento_chat';
+            }
             const flow = chatFlows[stepKey];
             if (!flow) return;
             chatState.step = stepKey;
@@ -2991,8 +3012,11 @@
                     contato: chatState.data.contato || '',
                     classificacao: qualificacao.classificacao,
                     qualificacao: qualificacao.justificativa,
-                    origem: 'Atendente virtual do site'
+                    origem: 'Atendente virtual do site',
+                    'bot-field': '',
+                    consentimento: chatState.privacyConsent ? 'Sim' : ''
                 });
+                window.track87('envio_formulario', { servico: chatState.data.servico || '', formulario: 'orcamento-chat' });
             } catch (erro) {
                 // Permite nova tentativa se o visitante refizer a solicitação.
                 chatState.leadEnviado = false;
@@ -3002,6 +3026,7 @@
 
         function chooseChatOption(option) {
             if (!option) return;
+            if (option.consent) chatState.privacyConsent = true;
             addChatMessage(option.text, 'user');
             if (option.data) Object.assign(chatState.data, option.data);
             chatOptionsEl.innerHTML = '';
@@ -3048,6 +3073,7 @@
             const isOpen = chatWindowEl.classList.toggle('active');
             document.getElementById('chatbotToggle').setAttribute('aria-expanded', String(isOpen));
             if (!isOpen) return;
+            window.track87('inicio_chat', { local: 'botao_atendente' });
             chatNotificationEl.style.display = 'none';
             if (!chatMessagesEl.children.length) renderChatStep('welcome');
             chatInputEl.focus();
@@ -3056,6 +3082,7 @@
         function openChat(servico) {
             const stepKey = chatFlows['detalhe_' + servico] ? 'detalhe_' + servico : 'servico';
             if (!chatWindowEl.classList.contains('active')) {
+                window.track87('inicio_chat', { local: 'servico' });
                 chatWindowEl.classList.add('active');
                 document.getElementById('chatbotToggle').setAttribute('aria-expanded', 'true');
                 chatNotificationEl.style.display = 'none';
@@ -3066,5 +3093,11 @@
 
         atualizarStatusDoChat();
     </script>
+    <aside id="cookieBanner" class="cookie-banner" aria-label="Preferências de cookies" hidden>
+        <p>Usamos cookies de análise somente com sua autorização. <a href="/privacidade">Política de Privacidade</a></p>
+        <button type="button" data-cookie="accepted">Aceitar análise</button>
+        <button type="button" data-cookie="rejected">Recusar</button>
+    </aside>
+    <button type="button" class="cookie-settings" id="cookieSettings">Preferências de cookies</button>
 </body>
 </html>

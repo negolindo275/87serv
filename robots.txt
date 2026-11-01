@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /candidatura-enviada
 
 Sitemap: https://87ss.netlify.app/sitemap.xml
