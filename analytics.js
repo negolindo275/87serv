@@ -51,5 +51,6 @@ const GA4_ID = 'GA4_ID';
         const local = link.dataset.local || (link.closest('footer') ? 'rodape' : link.closest('.hero') ? 'hero' : link.classList.contains('whatsapp-float') ? 'flutuante' : link.closest('.chatbot-container') ? 'chat' : 'contato');
         if (link.href.startsWith('https://wa.me/')) window.track87('clique_whatsapp', { local });
         if (link.href.startsWith('tel:')) window.track87('clique_telefone', { local });
+        if (link.href.startsWith('https://www.instagram.com/')) window.track87('clique_instagram', { local });
     });
 })();
